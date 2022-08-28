@@ -1,3 +1,7 @@
 ﻿# DtMoney
+ 
+ Reforçando conceitos dos hooks e criando a aplicação totalmente dinâmica
+ 
+ Utilizado miragejs para armazenar informações
 
-![image](https://user-images.githubusercontent.com/77466610/185823479-40c44952-89e0-4b3d-9d21-50c1af21bcdc.png)
+![image](https://user-images.githubusercontent.com/77466610/187085703-a09aec31-58a8-4e53-8173-a88a6e7a42e6.png)
