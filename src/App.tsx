@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { NewTransactionModal } from './components/NewTransactionModal';
+import { TransactionsProvider } from './TransactionsContext';
 
 import { GlobalStyle } from "./styles/global";
 
@@ -21,8 +22,8 @@ export function App() {
     }
 
     return (
-        // Div que nao sera repassada para o html
-        <> 
+        
+        <TransactionsProvider> 
             {/* Função que sera acionada ao abrir o modal */}
             <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
 
@@ -34,7 +35,7 @@ export function App() {
             />
 
             <GlobalStyle/>
-        </>
+        </TransactionsProvider>
     );
 }
 
