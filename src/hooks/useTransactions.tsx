@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState, ReactNode} from 'react'
-import { api } from './services/api';
+import { createContext, useEffect, useState, ReactNode, useContext} from 'react'
+import { api } from '../services/api';
 
 interface Transaction {
     id: number;
@@ -34,12 +34,13 @@ interface TransactionsContextData {
     createTransaction: (transaction: TransactionInput) => Promise<void>;
 }
 
-export const  TransactionsContext = createContext<TransactionsContextData>(
+const  TransactionsContext = createContext<TransactionsContextData>(
     {} as TransactionsContextData
 );
 // Forçando com que o que ele ache que possua esse formato, não outro jeito de se fazer quando é um objeto ele sempre dara erro sem isso
 // Aqui nao se tem problema pois o valor inicial nunca é usado e logo ele é substituido
 
+// Sera colocado no app
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
 
@@ -70,4 +71,12 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
             {children}
         </TransactionsContext.Provider>
     );
+}
+
+
+// Um hook no react sempre pode utilizar de outros hooks / Agora se importa somente esse useTransaction onde se quiser usar as transactions
+export function useTransactions(){
+    const context = useContext(TransactionsContext);
+
+    return context
 }
